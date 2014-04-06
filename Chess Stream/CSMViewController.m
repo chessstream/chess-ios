@@ -39,8 +39,25 @@
 
 #define FRAMES_BETWEEN_UPLOADS 15
 
+- (IBAction)focusNow:(id)sender {
+    NSLog(@"Focusing now");
+    
+    [self.device lockForConfiguration:NULL];
+    
+    CGPoint autofocusPoint = CGPointMake(0.5f, 0.5f);
+    [self.device setFocusPointOfInterest:autofocusPoint];
+    [self.device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
+    
+    CGPoint exposurePoint = CGPointMake(0.5f, 0.5f);
+    [self.device setExposurePointOfInterest:exposurePoint];
+    [self.device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
+    
+    [self.device unlockForConfiguration];
+    
+}
+
 - (IBAction)lockUnlockFocusExposure:(UIBarButtonItem *)sender {
-    if ([sender.title isEqualToString:@"Lock"]) {
+    if ([sender.title isEqualToString:@"🔒"]) {
         // Lock focus and exposure
         
         [self.device lockForConfiguration:NULL];
@@ -55,7 +72,7 @@
         
         [self.device unlockForConfiguration];
         
-        sender.title = @"Unlock";
+        sender.title = @"🔓";
     } else {
         // Reset focus and exposure to default
         
@@ -71,7 +88,7 @@
         
         [self.device unlockForConfiguration];
         
-        sender.title = @"Lock";
+        sender.title = @"🔒";
     }
 }
 
@@ -87,10 +104,10 @@
 }
 
 - (IBAction)pressedButton:(UIBarButtonItem *)sender {
-    if ([sender.title isEqualToString:@"Record"]) {
+    if ([sender.title isEqualToString:@"🔴"]) {
         BOOL success = [self askServerForNewID];
         if (success) {
-            sender.title = @"Stop";
+            sender.title = @"⬛️";
             NSLog(@"Created game. ID=%li", (long)self.gameID);
             self.shouldUpload = YES;
         } else {
@@ -98,7 +115,7 @@
             [alert show];
         }
     } else {
-        sender.title = @"Record";
+        sender.title = @"🔴";
         self.shouldUpload = NO;
     }
 }

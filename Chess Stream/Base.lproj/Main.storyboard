@@ -25,19 +25,25 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Lock" id="q2I-9W-qGO">
+                                    <barButtonItem title="🔒" id="q2I-9W-qGO">
                                         <connections>
                                             <action selector="lockUnlockFocusExposure:" destination="RUI-84-0aH" id="zHR-Rq-Gqb"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6QQ-6X-mNb"/>
+                                    <barButtonItem title="🔍" id="S8d-wf-Zlz">
+                                        <connections>
+                                            <action selector="focusNow:" destination="RUI-84-0aH" id="win-HI-3Bf"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="J7K-T5-6bJ"/>
-                                    <barButtonItem title="Record" id="lMa-eP-Pee">
+                                    <barButtonItem title="🔴" id="lMa-eP-Pee">
                                         <connections>
                                             <action selector="pressedButton:" destination="RUI-84-0aH" id="6G2-QF-xtU"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="YVC-fQ-SZL"/>
-                                    <barButtonItem title="Torch" id="Ls0-U4-uPU">
+                                    <barButtonItem title="🔦" id="Ls0-U4-uPU">
                                         <connections>
                                             <action selector="toggleLight:" destination="RUI-84-0aH" id="sQc-uH-oC6"/>
                                         </connections>
