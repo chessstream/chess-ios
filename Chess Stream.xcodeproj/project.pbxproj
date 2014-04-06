@@ -21,6 +21,10 @@
 		7770A41918F0A681009D7650 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7770A3FB18F0A681009D7650 /* UIKit.framework */; };
 		7770A42118F0A681009D7650 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7770A41F18F0A681009D7650 /* InfoPlist.strings */; };
 		7770A42318F0A681009D7650 /* Chess_StreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770A42218F0A681009D7650 /* Chess_StreamTests.m */; };
+		7770A42E18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770A42D18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m */; };
+		7770A43018F0BD82009D7650 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7770A42F18F0BD82009D7650 /* AVFoundation.framework */; };
+		7770A43318F0D596009D7650 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770A43218F0D596009D7650 /* AVCamPreviewView.m */; };
+		78B089C1DD0241198FFFC234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EBF9794BC9481DB98ED7CB /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		596CE78B8B10473FB92475EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7770A3F418F0A681009D7650 /* Chess Stream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chess Stream.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7770A3F718F0A681009D7650 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7770A3F918F0A681009D7650 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +58,13 @@
 		7770A41E18F0A681009D7650 /* Chess StreamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Chess StreamTests-Info.plist"; sourceTree = "<group>"; };
 		7770A42018F0A681009D7650 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7770A42218F0A681009D7650 /* Chess_StreamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chess_StreamTests.m; sourceTree = "<group>"; };
+		7770A42C18F0B8D2009D7650 /* CSMCaptureAndUploadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMCaptureAndUploadVC.h; sourceTree = "<group>"; };
+		7770A42D18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMCaptureAndUploadVC.m; sourceTree = "<group>"; };
+		7770A42F18F0BD82009D7650 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7770A43118F0D596009D7650 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
+		7770A43218F0D596009D7650 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
+		7770A43418F0DF51009D7650 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
+		99EBF9794BC9481DB98ED7CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +72,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7770A43018F0BD82009D7650 /* AVFoundation.framework in Frameworks */,
 				7770A3FA18F0A681009D7650 /* CoreGraphics.framework in Frameworks */,
 				7770A3FC18F0A681009D7650 /* UIKit.framework in Frameworks */,
 				7770A3F818F0A681009D7650 /* Foundation.framework in Frameworks */,
+				78B089C1DD0241198FFFC234 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +100,7 @@
 				7770A41C18F0A681009D7650 /* Chess StreamTests */,
 				7770A3F618F0A681009D7650 /* Frameworks */,
 				7770A3F518F0A681009D7650 /* Products */,
+				596CE78B8B10473FB92475EE /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +116,13 @@
 		7770A3F618F0A681009D7650 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7770A43418F0DF51009D7650 /* libPods-AFNetworking.a */,
+				7770A42F18F0BD82009D7650 /* AVFoundation.framework */,
 				7770A3F718F0A681009D7650 /* Foundation.framework */,
 				7770A3F918F0A681009D7650 /* CoreGraphics.framework */,
 				7770A3FB18F0A681009D7650 /* UIKit.framework */,
 				7770A41618F0A681009D7650 /* XCTest.framework */,
+				99EBF9794BC9481DB98ED7CB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,8 +133,12 @@
 				7770A40618F0A681009D7650 /* CSMAppDelegate.h */,
 				7770A40718F0A681009D7650 /* CSMAppDelegate.m */,
 				7770A40918F0A681009D7650 /* Main.storyboard */,
+				7770A42C18F0B8D2009D7650 /* CSMCaptureAndUploadVC.h */,
+				7770A42D18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m */,
 				7770A40C18F0A681009D7650 /* CSMViewController.h */,
 				7770A40D18F0A681009D7650 /* CSMViewController.m */,
+				7770A43118F0D596009D7650 /* AVCamPreviewView.h */,
+				7770A43218F0D596009D7650 /* AVCamPreviewView.m */,
 				7770A40F18F0A681009D7650 /* Images.xcassets */,
 				7770A3FE18F0A681009D7650 /* Supporting Files */,
 			);
@@ -159,9 +181,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7770A42618F0A681009D7650 /* Build configuration list for PBXNativeTarget "Chess Stream" */;
 			buildPhases = (
+				8E1FAAD694464CEB902EBCAB /* Check Pods Manifest.lock */,
 				7770A3F018F0A681009D7650 /* Sources */,
 				7770A3F118F0A681009D7650 /* Frameworks */,
 				7770A3F218F0A681009D7650 /* Resources */,
+				380251ED485B4246AE5F8186 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,6 +269,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		380251ED485B4246AE5F8186 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E1FAAD694464CEB902EBCAB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7770A3F018F0A681009D7650 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -252,7 +309,9 @@
 			files = (
 				7770A40818F0A681009D7650 /* CSMAppDelegate.m in Sources */,
 				7770A40418F0A681009D7650 /* main.m in Sources */,
+				7770A42E18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m in Sources */,
 				7770A40E18F0A681009D7650 /* CSMViewController.m in Sources */,
+				7770A43318F0D596009D7650 /* AVCamPreviewView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,12 +433,17 @@
 		};
 		7770A42718F0A681009D7650 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 596CE78B8B10473FB92475EE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chess Stream/Chess Stream-Prefix.pch";
 				INFOPLIST_FILE = "Chess Stream/Chess Stream-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -387,12 +451,17 @@
 		};
 		7770A42818F0A681009D7650 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 596CE78B8B10473FB92475EE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chess Stream/Chess Stream-Prefix.pch";
 				INFOPLIST_FILE = "Chess Stream/Chess Stream-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -457,6 +526,7 @@
 				7770A42818F0A681009D7650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7770A42918F0A681009D7650 /* Build configuration list for PBXNativeTarget "Chess StreamTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +535,7 @@
 				7770A42B18F0A681009D7650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

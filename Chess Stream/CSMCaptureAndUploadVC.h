@@ -1,5 +1,5 @@
 //
-//  CSMViewController.h
+//  CSMCaptureAndUploadVC.h
 //  Chess Stream
 //
 //  Created by Daylen Yang on 4/5/14.
@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface CSMViewController : UIViewController  <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface CSMCaptureAndUploadVC : UIViewController
+
+@property NSInteger gameID;
 
 @end
