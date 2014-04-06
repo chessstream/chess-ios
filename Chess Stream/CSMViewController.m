@@ -38,6 +38,44 @@
 #define UPLOAD_ENDPOINT @"update"
 
 #define FRAMES_BETWEEN_UPLOADS 15
+
+- (IBAction)lockUnlockFocusExposure:(UIBarButtonItem *)sender {
+    if ([sender.title isEqualToString:@"Lock"]) {
+        // Lock focus and exposure
+        
+        [self.device lockForConfiguration:NULL];
+        
+        CGPoint autofocusPoint = CGPointMake(0.5f, 0.5f);
+        [self.device setFocusPointOfInterest:autofocusPoint];
+        [self.device setFocusMode:AVCaptureFocusModeLocked];
+        
+        CGPoint exposurePoint = CGPointMake(0.5f, 0.5f);
+        [self.device setExposurePointOfInterest:exposurePoint];
+        [self.device setExposureMode:AVCaptureExposureModeLocked];
+        
+        [self.device unlockForConfiguration];
+        
+        sender.title = @"Unlock";
+    } else {
+        // Reset focus and exposure to default
+        
+        [self.device lockForConfiguration:NULL];
+        
+        CGPoint autofocusPoint = CGPointMake(0.5f, 0.5f);
+        [self.device setFocusPointOfInterest:autofocusPoint];
+        [self.device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
+        
+        CGPoint exposurePoint = CGPointMake(0.5f, 0.5f);
+        [self.device setExposurePointOfInterest:exposurePoint];
+        [self.device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
+        
+        [self.device unlockForConfiguration];
+        
+        sender.title = @"Lock";
+    }
+}
+
+
 - (IBAction)toggleLight:(UIBarButtonItem *)sender {
     [self.device lockForConfiguration:NULL];
     if ([self.device torchMode] == AVCaptureTorchModeOff) {
