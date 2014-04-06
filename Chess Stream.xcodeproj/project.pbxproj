@@ -24,6 +24,7 @@
 		7770A42E18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770A42D18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m */; };
 		7770A43018F0BD82009D7650 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7770A42F18F0BD82009D7650 /* AVFoundation.framework */; };
 		7770A43318F0D596009D7650 /* AVCamPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770A43218F0D596009D7650 /* AVCamPreviewView.m */; };
+		779AA04C18F1309000231670 /* CSMImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 779AA04B18F1309000231670 /* CSMImageUtils.m */; };
 		78B089C1DD0241198FFFC234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EBF9794BC9481DB98ED7CB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		7770A43118F0D596009D7650 /* AVCamPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamPreviewView.h; sourceTree = "<group>"; };
 		7770A43218F0D596009D7650 /* AVCamPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamPreviewView.m; sourceTree = "<group>"; };
 		7770A43418F0DF51009D7650 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
+		779AA04A18F1309000231670 /* CSMImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMImageUtils.h; sourceTree = "<group>"; };
+		779AA04B18F1309000231670 /* CSMImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMImageUtils.m; sourceTree = "<group>"; };
 		99EBF9794BC9481DB98ED7CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -133,6 +136,8 @@
 				7770A40618F0A681009D7650 /* CSMAppDelegate.h */,
 				7770A40718F0A681009D7650 /* CSMAppDelegate.m */,
 				7770A40918F0A681009D7650 /* Main.storyboard */,
+				779AA04A18F1309000231670 /* CSMImageUtils.h */,
+				779AA04B18F1309000231670 /* CSMImageUtils.m */,
 				7770A42C18F0B8D2009D7650 /* CSMCaptureAndUploadVC.h */,
 				7770A42D18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m */,
 				7770A40C18F0A681009D7650 /* CSMViewController.h */,
@@ -308,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7770A40818F0A681009D7650 /* CSMAppDelegate.m in Sources */,
+				779AA04C18F1309000231670 /* CSMImageUtils.m in Sources */,
 				7770A40418F0A681009D7650 /* main.m in Sources */,
 				7770A42E18F0B8D2009D7650 /* CSMCaptureAndUploadVC.m in Sources */,
 				7770A40E18F0A681009D7650 /* CSMViewController.m in Sources */,

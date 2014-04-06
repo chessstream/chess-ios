@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="J7K-T5-6bJ"/>
-                                    <barButtonItem title="Start" id="lMa-eP-Pee">
+                                    <barButtonItem title="Record" id="lMa-eP-Pee">
                                         <connections>
                                             <action selector="pressedButton:" destination="RUI-84-0aH" id="6G2-QF-xtU"/>
                                         </connections>

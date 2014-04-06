@@ -9,7 +9,9 @@
 #import "CSMViewController.h"
 #import "CSMCaptureAndUploadVC.h"
 #import "AVCamPreviewView.h"
+#import "CSMImageUtils.h"
 #import <AFNetworking/AFNetworking.h>
+#import <GPUImage/GPUImage.h>
 
 @interface CSMViewController ()
 
@@ -47,7 +49,7 @@
 }
 
 - (IBAction)pressedButton:(UIBarButtonItem *)sender {
-    if ([sender.title isEqualToString:@"Start"]) {
+    if ([sender.title isEqualToString:@"Record"]) {
         BOOL success = [self askServerForNewID];
         if (success) {
             sender.title = @"Stop";
@@ -58,7 +60,7 @@
             [alert show];
         }
     } else {
-        sender.title = @"Start";
+        sender.title = @"Record";
         self.shouldUpload = NO;
     }
 }
@@ -80,7 +82,7 @@
     
     // Set up the session
     self.session = [[AVCaptureSession alloc] init];
-    self.session.sessionPreset = AVCaptureSessionPreset1920x1080;
+    self.session.sessionPreset = AVCaptureSessionPresetHigh;
     
     // Set up the preview thingy
     self.cameraPreview.session = self.session;
@@ -129,23 +131,35 @@
     
 }
 
+/*
+ * This method is called every time we get a new video frame.
+ */
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
     if (self.shouldUpload) {
         if (self.counter++ >= FRAMES_BETWEEN_UPLOADS) {
+            // Reset the counter
             self.counter = 0;
-            UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
-            NSError *error = nil;
-            NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BASE_URL, UPLOAD_ENDPOINT] parameters:@{@"id" : [NSString stringWithFormat:@"%li", (long)self.gameID]} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 1.0) name:@"img" fileName:@"image.jpg" mimeType:@"image/jpeg"];
-            } error:&error];
             
+            // Original image
+            UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
+            
+            // Create sobel
+            UIImage *sobel = [CSMImageUtils sobelImage:image];
+            
+            // Form the URL request
+            NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BASE_URL, UPLOAD_ENDPOINT] parameters:@{@"id" : [NSString stringWithFormat:@"%li", (long)self.gameID]} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 1.0) name:@"original" fileName:@"original.jpg" mimeType:@"image/jpeg"];
+                [formData appendPartWithFileData:UIImageJPEGRepresentation(sobel, 1.0) name:@"sobel" fileName:@"sobel.jpg" mimeType:@"image/jpeg"];
+            } error:nil];
+                      
+            // Add the operations
             AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
             [self.netMan.operationQueue addOperation:operation];
+            
             NSLog(@"Uploading");
         }
         
-       
     }
 }
 
