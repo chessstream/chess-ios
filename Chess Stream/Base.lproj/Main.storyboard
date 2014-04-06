@@ -32,6 +32,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="YVC-fQ-SZL"/>
+                                    <barButtonItem title="Torch" id="Ls0-U4-uPU">
+                                        <connections>
+                                            <action selector="toggleLight:" destination="RUI-84-0aH" id="sQc-uH-oC6"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -43,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Id3-wI-1ij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="609" y="-16"/>
+            <point key="canvasLocation" x="424" y="-34"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

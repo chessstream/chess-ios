@@ -35,12 +35,23 @@
 #define ID_ENDPOINT @"create"
 #define UPLOAD_ENDPOINT @"update"
 
+#define FRAMES_BETWEEN_UPLOADS 15
+- (IBAction)toggleLight:(UIBarButtonItem *)sender {
+    [self.device lockForConfiguration:NULL];
+    if ([self.device torchMode] == AVCaptureTorchModeOff) {
+        [self.device setTorchMode:AVCaptureTorchModeOn];
+    } else {
+        [self.device setTorchMode:AVCaptureTorchModeOff];
+    }
+    [self.device unlockForConfiguration];
+}
+
 - (IBAction)pressedButton:(UIBarButtonItem *)sender {
     if ([sender.title isEqualToString:@"Start"]) {
         BOOL success = [self askServerForNewID];
         if (success) {
             sender.title = @"Stop";
-            NSLog(@"created game. ID=%i", self.gameID);
+            NSLog(@"Created game. ID=%li", (long)self.gameID);
             self.shouldUpload = YES;
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uh-oh" message:@"Could not contact the chess server." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -64,7 +75,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.counter = 30;
+    self.counter = 0;
     self.shouldUpload = NO;
     
     // Set up the session
@@ -95,7 +106,6 @@
     
     // Start the camera
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-        NSLog(@"%@", granted ? @"granted" : @"nope");
         if (granted)
         {
             //Granted access to mediaType
@@ -122,46 +132,20 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
     if (self.shouldUpload) {
-        if (self.counter++ >= 30) {
+        if (self.counter++ >= FRAMES_BETWEEN_UPLOADS) {
             self.counter = 0;
             UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
             NSError *error = nil;
-            NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BASE_URL, UPLOAD_ENDPOINT] parameters:@{@"id" : [NSString stringWithFormat:@"%i", self.gameID]} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BASE_URL, UPLOAD_ENDPOINT] parameters:@{@"id" : [NSString stringWithFormat:@"%li", (long)self.gameID]} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                 [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 1.0) name:@"img" fileName:@"image.jpg" mimeType:@"image/jpeg"];
             } error:&error];
-            NSLog([[request allHTTPHeaderFields] description]);
             
             AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
             [self.netMan.operationQueue addOperation:operation];
             NSLog(@"Uploading");
         }
         
-        /*
-        if (self.counter++ <= 50) {
-            self.counter = 1000;
-            UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
-            NSLog([image description]);
-            NSLog(@"UPLOADING");
-            // Create an operation
-            NSError *error = nil;
-            NSURLRequest *req = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", BASE_URL, UPLOAD_ENDPOINT] parameters:@{@"id": [NSString stringWithFormat:@"%i", self.gameID]} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                NSData *imgDat = UIImageJPEGRepresentation(image, 1);
-                assert(imgDat);
-                [formData appendPartWithFileData:imgDat name:@"img" fileName:@"blahblahtroll.jpg" mimeType:@"image/jpeg"];
-            } error:&error];
-            if (!req) {
-                NSLog([error description]);
-            }
-            NSLog(@"%@", [req allHTTPHeaderFields]);
-            NSData *bodyD = [req HTTPBody];
-//            [bodyD length];
-            NSString *body = [[NSString alloc] initWithData:[req HTTPBody] encoding:NSUTF16StringEncoding];
-            NSLog(@"bytes=%i", [bodyD length]);
-            
-            AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:req];
-            [self.netMan.operationQueue addOperation:op];
-            
-        }*/
+       
     }
 }
 
