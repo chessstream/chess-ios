@@ -107,6 +107,8 @@
     if ([sender.title isEqualToString:@"🔴"]) {
         BOOL success = [self askServerForNewID];
         if (success) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Recording started" message:[NSString stringWithFormat:@"Your Game ID is %i", self.gameID] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
             sender.title = @"⬛️";
             NSLog(@"Created game. ID=%li", (long)self.gameID);
             self.shouldUpload = YES;
